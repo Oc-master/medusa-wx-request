@@ -4,6 +4,7 @@
   "description": "微信小程序统一请求功能函数",
   "main": "index.js",
   "scripts": {
+    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
