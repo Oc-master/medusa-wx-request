@@ -66,7 +66,6 @@ class Request {
           resolve(err);
         },
         complete: () => {
-          console.log('---- complete ----');
           loadingOptions.isShow && wx.hideLoading();
         },
       });
