@@ -13,14 +13,14 @@ const POST_DEFAULT_HEADERS = {
 };
 
 class Request {
-  constructor({ baseUrl = '', isFilterRes = true }) {
+  constructor({ baseUrl = '', isFilterRes = true } = {}) {
     this.baseUrl = baseUrl;
     this.isFilterRes = isFilterRes;
   }
 
   request(options) {
     const {
-      url, header, method, loadingOps = {}, toastOps = {},
+      url, header = {}, method = 'GET', loadingOps = {}, toastOps = {},
     } = options;
     if (!url) {
       /** 必填字段验证 */
