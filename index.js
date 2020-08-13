@@ -1,12 +1,12 @@
 const platform = wx;
 
 const DEFAULT_LOADING_OPTIONS = {
-  isShow: false,
+  isShow: true,
   text: 'loading...',
 };
 
 const DEFAULT_TOAST_OPTIONS = {
-  isShow: false,
+  isShow: true,
   text: '服务器开小差了哦',
 };
 
