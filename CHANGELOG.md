@@ -1,3 +1,13 @@
+## 1.0.2 (2020-08-13)
+
+
+### Features
+
+* **index.js:** 将loading功能与toast功能设置为默认开启的 ([0cdbdc6](https://github.com/Oc-master/medusa-wx-request/commit/0cdbdc680b815c27d02e8c95a6c22ba3da10ac0a))
+* **index.js:** 添加platform变量 更改数据返回格式 增加读取接口错误信息字段提示功能 ([77b9fdf](https://github.com/Oc-master/medusa-wx-request/commit/77b9fdf7ed65ee25de0843900eac592590355c81))
+
+
+
 ## 1.0.1 (2020-08-12)
 
 
