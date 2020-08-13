@@ -14,18 +14,28 @@ const POST_DEFAULT_HEADERS = {
   'content-type': 'application/x-www-form-urlencoded',
 };
 
+/**
+ * Request 请求功能类
+ * @param {String} baseUrl API 地址通用部分字符串
+ * @param {Boolean} isFilterRes 是否过滤请求返回的数据结构 true: 只返回业务服务器的数据
+ */
 class Request {
   constructor({ baseUrl = '', isFilterRes = true } = {}) {
     this.baseUrl = baseUrl;
     this.isFilterRes = isFilterRes;
   }
 
+  /**
+   * 请求方法
+   * @param {Object} options 支持原生 request 方法左右参数，具体请参阅官方 API 文档
+   * @param {Object} loadingOps 附加参数，用来支持加载时显示loading功能
+   * @param {Object} toastOps 附加参数，用来支持发生错误时提供错误提示功能
+   */
   request(options) {
     const {
       url, header = {}, method = 'GET', loadingOps = {}, toastOps = {},
     } = options;
     if (!url) {
-      /** 必填字段验证 */
       console.error('url 为请求函数必填字段');
       return undefined;
     }
