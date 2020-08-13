@@ -1,3 +1,5 @@
+const platform = wx;
+
 const DEFAULT_LOADING_OPTIONS = {
   isShow: false,
   text: 'loading...',
@@ -24,6 +26,8 @@ class Request {
     } = options;
     if (!url) {
       /** 必填字段验证 */
+      console.error('url 为请求函数必填字段');
+      return undefined;
     }
     const upperMethod = method.toUpperCase();
     if (upperMethod === 'POST') {
@@ -39,34 +43,39 @@ class Request {
     };
     return new Promise((resolve) => {
       if (loadingOptions.isShow) {
-        wx.showLoading({
+        platform.showLoading({
           title: loadingOptions.text,
           mask: true,
         });
       }
-      wx.request({
+      platform.request({
         ...options,
         header,
         url: `${this.baseUrl}${url}`,
         method: upperMethod,
         success: (res) => {
           const { data: resData } = res;
-          this.isFilterRes ? resolve(resData) : resolve(res);
+          this.isFilterRes ? resolve([null, resData]) : resolve([null, res]);
         },
-        fail: (err) => {
-          if (toastOptions.isShow) {
-            setTimeout(() => {
-              wx.showToast({
-                title: toastOptions.text,
-                mask: true,
-                icon: 'none',
-              });
-            }, 0);
+        fail: (err = {}) => {
+          try {
+            const { msg, message } = err;
+            if (toastOptions.isShow) {
+              setTimeout(() => {
+                platform.showToast({
+                  title: msg || message || toastOptions.text,
+                  mask: true,
+                  icon: 'none',
+                });
+              }, 0);
+            }
+            resolve([err, null]);
+          } catch (e) {
+            resolve([err, null]);
           }
-          resolve(err);
         },
         complete: () => {
-          loadingOptions.isShow && wx.hideLoading();
+          loadingOptions.isShow && platform.hideLoading();
         },
       });
     });
