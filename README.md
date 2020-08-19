@@ -13,7 +13,7 @@ medusa-wx-request 是基于官方 API 进行了二次封装的函数工具，主
 import Request from 'medusa-wx-request';
 
 const md = new Request({
-	baseUrl: 'https://www.miniprogram.com',
+  baseUrl: 'https://www.miniprogram.com',
   isFilterRes: false,
 });
 ```
@@ -38,7 +38,7 @@ const getLoginInfo = () => md.request({ url: '/api/login' });
 const [err, res] = await getLoginInfo();
 /** Promise 语法 **/
 getLoginInfo().then(([err, res]) => {
-	...
+  ...
 });
 ```
 ### Loading 与 Toast 功能
@@ -46,7 +46,7 @@ getLoginInfo().then(([err, res]) => {
 **示例**
 ```javascript
 /**
-	* 通过 loadingOps 对象控制加载中提示功能
+  * 通过 loadingOps 对象控制加载中提示功能
   * @param isShow {Boolean} 开关功能 默认值为true
   * @param text {String} 提示文案 默认值为'loading...'
   **/
@@ -64,7 +64,7 @@ const getLoginInfo = () => md.request({
 ```
 ```javascript
 /**
-	* 通过 toastOps 对象控制错误提示功能
+  * 通过 toastOps 对象控制错误提示功能
   * @param isShow {Boolean} 开关功能 默认值为 true
   * @param text {String} 提示文案 默认值为 '服务器开小差了哦'
   **/
