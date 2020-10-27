@@ -64,7 +64,22 @@ class Request {
         url: `${this.baseUrl}${url}`,
         method: upperMethod,
         success: (res) => {
-          const { data: resData } = res;
+          const { data: resData, statusCode } = res;
+          const isError = (/^(4|5)[0-9][0-9]$/).test(statusCode);
+          if (isError) {
+            const { msg, message } = resData;
+            if (toastOptions.isShow) {
+              setTimeout(() => {
+                platform.showToast({
+                  title: msg || message || toastOptions.text,
+                  mask: true,
+                  icon: 'none',
+                });
+              }, 0);
+            }
+            this.isFilterRes ? resolve([resData, null]) : resolve([res, null]);
+            return undefined;
+          }
           this.isFilterRes ? resolve([null, resData]) : resolve([null, res]);
         },
         fail: (err = {}) => {
