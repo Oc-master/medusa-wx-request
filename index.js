@@ -10,10 +10,6 @@ const DEFAULT_TOAST_OPTIONS = {
   text: '服务器开小差了哦',
 };
 
-const POST_DEFAULT_HEADERS = {
-  'content-type': 'application/x-www-form-urlencoded',
-};
-
 /**
  * Request 请求功能类
  * @param {String} baseUrl API 地址通用部分字符串
@@ -40,9 +36,6 @@ class Request {
       return undefined;
     }
     const upperMethod = method.toUpperCase();
-    if (upperMethod === 'POST') {
-      Object.assign(header, POST_DEFAULT_HEADERS);
-    }
     const loadingOptions = {
       ...DEFAULT_LOADING_OPTIONS,
       ...loadingOps,
