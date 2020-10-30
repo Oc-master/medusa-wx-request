@@ -1,3 +1,12 @@
+## [1.0.5](https://github.com/Oc-master/medusa-wx-request/compare/v1.0.4...v1.0.5) (2020-10-30)
+
+
+### Features
+
+* **index.js:** 去除POST请求方式添加默认编码格式功能 ([db4eaed](https://github.com/Oc-master/medusa-wx-request/commit/db4eaed7189f974e505f65efa675f6f9d2c90355))
+
+
+
 ## 1.0.4 (2020-10-27)
 
 
